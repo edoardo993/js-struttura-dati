@@ -22,7 +22,7 @@ const editions = {
         rarity: 'red'
     }
 };
-const powerValues = [1, 2, 3, 4, 5];
+const powerValues = [0, 1, 2, 3, 4, 5];
 const cards=[{
     cardName: 'Grizzly Bears',
     cost: {
@@ -238,6 +238,54 @@ const cards=[{
             power: 0,
             toughness: 0
         }
+    },
+
+    {
+      cardName: 'Boschetto del Guardiano',
+      cost: {
+          genericCostNumber: 0,
+          costFields: [
+          fieldCodes[3]
+          ]
+      },
+  
+      picture: 'img.png',
+      cardType: cardTypes[0],
+      cardObject: 'Terra',
+  
+      editionType: editions['SP'],
+  
+      description: 'Aggiungi 1 alla tua riserva di mana.',
+      story: 'TAPpa due creature STAPpate che controlli. SAcrifica il Boschetto del Guardiano: metti sul campo di battaglia una pedina cratura Elementale 8/8 verde e bianca con cautela.',
+  
+      score: {
+          power: 0,
+          toughness: 0
+      }
+    },
+
+    {
+      cardName: 'Memoria Selettiva',
+      cost: {
+          genericCostNumber: 3,
+          costFields: [
+          fieldCodes[1]
+          ]
+      },
+  
+      picture: 'img.png',
+      cardType: cardTypes[5],
+      cardObject: 'Stregoneria',
+  
+      editionType: editions['SP'],
+  
+      description: 'Passa in rassegna il tuo grimerio per un qualsiasi numero di carte non terra ed esiliale. Poi rimescola il tuo grimorio.',
+      story: '"Io più di chiunque altro so bene che la memoria non è un rifugio sicuro per le cose di valore."',
+  
+      score: {
+          power: 0,
+          toughness: 0
+      }
     }
   ];
   function filterByPower(powerValue, array){
@@ -320,7 +368,6 @@ const cards=[{
   });
   $('#card-name-select').change(function(){
     const selectValue=$(this).val();
-    // const filteredArray=filterByType(selectValue, cards);
     const filteredArray=filterByName(selectValue, cards);
     if(!cardNames.includes(selectValue)){
       render('cards-list', cards);
