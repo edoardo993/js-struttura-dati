@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Struttura Dati</title>
+</head>
+<body>
+    <div class="container">
+        <h1>magic cards game</h1>
+        <div class="filter-container">
+            <label for="power-select">Filtra per potere<br></label>
+            <select name="power-select" id="power-select">
+                <option value="choice">Scegli il potere della carta</option>
+            </select>
+        </div>
+
+        <div class="filter-container">
+            <label for="card-type-select" class="filter">Filtra per tipo di carta<br></label>
+            <select name="card-type-select" id="card-type-select">
+                <option value="choice" selected="selected">Scegli il tipo di carta</option>
+            </select>
+        </div>
+
+        <div id="reset-button" onclick="location.reload()">
+            <span>Clicca qua sotto per resettare la pagina</span>
+            <button>refresh page</button>
+        </div>
+        <div class="all-or-filtered-cards">
+            <span id="all-cards-txt">all cards</span>
+            <span id="filtered-by-power-txt" class="hide">filtered cards by power</span>
+            <span id="filtered-by-type-txt" class="hide">filtered cards by type</span>
+        </div>
+        <div class="list-element">
+            <ul id="cards-list" class="container-flex"></ul>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
