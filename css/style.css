@@ -20,6 +20,9 @@ body{
     padding: 0 20px 0 20px
 }
 .container-flex{
+    display: flex
+}
+.list-element .container-flex{
     display: flex;
     flex-wrap: wrap;
 }
@@ -30,7 +33,7 @@ h1{
     padding: 40px
 }
 .list-element{
-    margin-bottom: 40px
+    margin-bottom: 80px
 }
 ul li{
     list-style-type: none
@@ -119,4 +122,18 @@ p{
     margin-left: 50px;
     border: 1px dashed #000;
     margin-top: 15px
+}
+footer{
+    text-align: center;
+    font-size: 20px;
+    height: 80px;
+    line-height: 80px;
+    background: rgb(221, 159, 79)
+}
+footer{
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 20px;
+    height: 80px;
+    background: rgb(221, 159, 79)
 }

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous"/>
     <title>Struttura Dati</title>
 </head>
 <body>
@@ -24,19 +27,30 @@
             </select>
         </div>
 
-        <div id="reset-button" onclick="location.reload()">
+        <div class="filter-container">
+            <label for="card-name-select" class="filter">Filtra per nome carta<br></label>
+            <select name="card-name-select" id="card-name-select">
+                <option value="choice">Scegli il nome della carta</option>
+            </select>
+        </div>
+
+        <div id="reset-button">
             <span>Clicca qua sotto per resettare la pagina</span>
-            <button>refresh page</button>
+            <button onclick="location.reload()">refresh page</button>
         </div>
         <div class="all-or-filtered-cards">
             <span id="all-cards-txt">all cards</span>
             <span id="filtered-by-power-txt" class="hide">filtered cards by power</span>
             <span id="filtered-by-type-txt" class="hide">filtered cards by type</span>
+            <span id="filtered-by-name-txt" class="hide">filtered cards by name</span>
         </div>
         <div class="list-element">
             <ul id="cards-list" class="container-flex"></ul>
         </div>
     </div>
+    <footer class="container-flex">
+        <span><i class="far fa-copyright"></i> Edoardo Piragine</span>
+    </footer>
 
     <script src="js/script.js"></script>
 </body>

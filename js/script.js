@@ -11,6 +11,7 @@ const cardTypes = [
     'Stregonerie',
     'Creature Leggendarie'
 ];
+const cardNames=[];
 const editions = {
     'BL': {
         edition: 'Boolean',
@@ -249,6 +250,11 @@ const cards=[{
           return element.cardType===cardTypeValue
       })
   };
+  function filterByName(cardNameValue, array){
+    return array.filter((element)=>{
+        return element.cardName===cardNameValue
+    })
+};
   function render(DOMElement, array){
     const cardListHTMLElement=document.getElementById(DOMElement);
     cardListHTMLElement.innerHTML='';
@@ -274,9 +280,17 @@ const cards=[{
         select.innerHTML+=`<option value="${element}">${element}</option>`
     })
   };
+  function filteredNames(array, newArray){
+    array.forEach((element)=>{
+      newArray.push(element.cardName);
+      return newArray
+    })
+  };
   render('cards-list', cards);
   renderSelect('power-select', powerValues);
   renderSelect('card-type-select', cardTypes);
+  filteredNames(cards, cardNames);
+  renderSelect('card-name-select', cardNames);
   $('#power-select').change(function(){
     const selectValue=$(this).val();
       if(isNaN(selectValue)){
@@ -287,23 +301,37 @@ const cards=[{
         const selectValue=parseInt($(this).val());
         const filteredArray=filterByPower(selectValue, cards);
         render('cards-list', filteredArray);
-        $('#all-cards-txt').addClass('hide');
+        $('#all-cards-txt, #filtered-by-type-txt').addClass('hide');
         $('#filtered-by-power-txt').removeClass('hide')
       }
   });
   $('#card-type-select').change(function(){
-      const selectValue=$(this).val();
-      const filteredArray=filterByType(selectValue, cards);
-      if(!cardTypes.includes(selectValue)){
-        render('cards-list', cards);
-        $('#all-cards-txt').removeClass('hide');
-        $('#filtered-by-type-txt').addClass('hide')
-      }else{
-        render('cards-list', filteredArray);
-        $('#all-cards-txt').addClass('hide');
-        $('#filtered-by-type-txt').removeClass('hide')
-      }
+    const selectValue=$(this).val();
+    const filteredArray=filterByType(selectValue, cards);
+    if(!cardTypes.includes(selectValue)){
+      render('cards-list', cards);
+      $('#all-cards-txt').removeClass('hide');
+      $('#filtered-by-type-txt').addClass('hide')
+    }else{
+      render('cards-list', filteredArray);
+      $('#all-cards-txt, #filtered-by-power-txt, #filtered-by-name-txt').addClass('hide');
+      $('#filtered-by-type-txt').removeClass('hide')
+    }
   });
-  $('#reset-button').click(function(){
+  $('#card-name-select').change(function(){
+    const selectValue=$(this).val();
+    // const filteredArray=filterByType(selectValue, cards);
+    const filteredArray=filterByName(selectValue, cards);
+    if(!cardNames.includes(selectValue)){
+      render('cards-list', cards);
+      $('#all-cards-txt').removeClass('hide');
+      $('#filtered-by-type-txt, #filtered-by-name-txt, #filtered-by-power-txt').addClass('hide')
+    }else{
+      render('cards-list', filteredArray);
+      $('#all-cards-txt, #filtered-by-power-txt, #filtered-by-type-txt').addClass('hide');
+      $('#filtered-by-name-txt').removeClass('hide')
+    }
+  });
+  $('#reset-button button').click(function(){
     location.reload();
   });
